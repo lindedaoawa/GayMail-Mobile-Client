@@ -19,6 +19,21 @@ enum ApiError: LocalizedError, Equatable {
         return false
     }
 
+    /// HTTP 状态码，非 HTTP 错误时为 nil
+    var statusCode: Int? {
+        if case let .http(code, _, _) = self { return code }
+        return nil
+    }
+
+    /// 复刻 Android 端登录流程的判断：需要验证码，或 400 且提示包含「人机验证」
+    var requiresCaptchaRetry: Bool {
+        if needCaptcha { return true }
+        if case let .http(code, message, _) = self, code == 400, message.contains("人机验证") {
+            return true
+        }
+        return false
+    }
+
     /// 复刻 Android 端 `ApiClient.errorOf(code, body)` 的解析逻辑
     static func from(statusCode: Int, body: String) -> ApiError {
         var message = "HTTP \(statusCode)"

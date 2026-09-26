@@ -15,6 +15,8 @@ struct LoginView: View {
     @State private var captchaAttempt = UUID()
     @State private var showCaptcha = false
     @State private var captchaHeight: CGFloat = 78
+    /// 对应 Android 端 `recaptchaUsed`，同一次登录只自动重新验证一次
+    @State private var recaptchaUsed = false
 
     var body: some View {
         NavigationView {
@@ -160,26 +162,64 @@ struct LoginView: View {
         }
 
         busy = true
+        recaptchaUsed = false
         showCaptcha = true
     }
 
     private func performLogin(captcha: String) async {
         let user = username.trimmingCharacters(in: .whitespacesAndNewlines)
         do {
-            let result = try await session.api.login(username: user, password: password, captchaToken: captcha)
+            let result = try await loginWithRetry(user: user, password: password, captcha: captcha)
             await MainActor.run {
                 // 服务端未返回用户名时回退到用户输入值，与 Android 端一致
                 let resolved = result.username.isEmpty ? user : result.username
-                session.saveSession(UserResult(token: result.token, username: resolved, email: result.email))
+                session.saveSession(
+                    UserResult(token: result.token, username: resolved, email: result.email, isAdmin: result.isAdmin)
+                )
                 reset()
             }
         } catch {
-            let reason = (error as? ApiError)?.errorDescription ?? error.localizedDescription
-            await MainActor.run {
-                message = "\(L10n.loginFailed): \(reason)"
-                reset()
-            }
+            await MainActor.run { handleLoginFailure(error, user: user) }
         }
+    }
+
+    /// 对应 Android 端 `LoginActivity.loginWithRetry`：
+    /// 最多尝试 3 次，普通异常按 1s/2s 退避重试；ApiException（含人机验证）立即抛出。
+    private func loginWithRetry(user: String, password: String, captcha: String) async throws -> UserResult {
+        var attempt = 1
+        var last: Error = ApiError.transport(message: L10n.loginFailed)
+        while attempt < 4 {
+            do {
+                return try await session.api.login(username: user, password: password, captchaToken: captcha)
+            } catch let error as ApiError {
+                throw error
+            } catch {
+                last = error
+                if attempt < 3 {
+                    try? await Task.sleep(nanoseconds: UInt64(attempt) * 1_000_000_000)
+                }
+            }
+            attempt += 1
+        }
+        throw last
+    }
+
+    /// 服务端要求重新人机验证时，自动重新拉起一次验证窗口；否则展示错误。
+    private func handleLoginFailure(_ error: Error, user: String) {
+        let apiError = error as? ApiError
+        if apiError?.requiresCaptchaRetry == true, !recaptchaUsed {
+            recaptchaUsed = true
+            message = L10n.captchaExpired
+            captchaToken = nil
+            captchaError = nil
+            captchaHeight = 78
+            captchaAttempt = UUID()
+            showCaptcha = true
+            return
+        }
+        let reason = apiError?.errorDescription ?? error.localizedDescription
+        message = "\(L10n.loginFailed): \(reason)"
+        reset()
     }
 
     private func openRegister() {
