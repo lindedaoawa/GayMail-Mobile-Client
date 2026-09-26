@@ -30,6 +30,7 @@ struct ComposeView: View {
     @State private var captchaError: String?
     @State private var captchaAttempt = UUID()
     @State private var showCaptcha = false
+    @State private var captchaHeight: CGFloat = 78
 
     private static let maxAttachmentBytes = 16 * 1024 * 1024
 
@@ -115,9 +116,10 @@ struct ComposeView: View {
             HCaptchaView(
                 siteKey: ApiClient.hcaptchaSiteKey,
                 token: $captchaToken,
-                errorMessage: $captchaError
+                errorMessage: $captchaError,
+                height: $captchaHeight
             )
-            .frame(height: 90)
+            .frame(height: captchaHeight)
             .id(captchaAttempt)
 
             if let captchaError {
@@ -165,6 +167,7 @@ struct ComposeView: View {
         sending = true
         captchaToken = nil
         captchaError = nil
+        captchaHeight = 78
         captchaAttempt = UUID()
         showCaptcha = true
     }

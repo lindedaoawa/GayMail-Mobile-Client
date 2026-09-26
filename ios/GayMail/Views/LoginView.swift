@@ -5,7 +5,6 @@ import UIKit
 struct LoginView: View {
     @EnvironmentObject private var session: SessionStore
 
-    @State private var server = ApiClient.defaultBaseURL
     @State private var username = ""
     @State private var password = ""
 
@@ -15,6 +14,7 @@ struct LoginView: View {
     @State private var captchaError: String?
     @State private var captchaAttempt = UUID()
     @State private var showCaptcha = false
+    @State private var captchaHeight: CGFloat = 78
 
     var body: some View {
         NavigationView {
@@ -23,12 +23,6 @@ struct LoginView: View {
                     header
 
                     VStack(spacing: 12) {
-                        labelledField(title: L10n.hintServer, systemImage: "server.rack") {
-                            TextField(ApiClient.defaultBaseURL, text: $server)
-                                .keyboardType(.URL)
-                                .textInputAutocapitalization(.never)
-                                .disableAutocorrection(true)
-                        }
                         labelledField(title: "用户名 / 邮箱", systemImage: "person") {
                             TextField("username", text: $username)
                                 .textInputAutocapitalization(.never)
@@ -118,9 +112,10 @@ struct LoginView: View {
             HCaptchaView(
                 siteKey: ApiClient.hcaptchaSiteKey,
                 token: $captchaToken,
-                errorMessage: $captchaError
+                errorMessage: $captchaError,
+                height: $captchaHeight
             )
-            .frame(height: 90)
+            .frame(height: captchaHeight)
             .id(captchaAttempt)
 
             if let captchaError {
@@ -151,6 +146,7 @@ struct LoginView: View {
         message = nil
         captchaToken = nil
         captchaError = nil
+        captchaHeight = 78
         captchaAttempt = UUID()
 
         let user = username.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -158,13 +154,6 @@ struct LoginView: View {
             message = L10n.loginFailed
             return
         }
-
-        var address = server.trimmingCharacters(in: .whitespacesAndNewlines)
-        while address.hasSuffix("/") { address.removeLast() }
-        if address.hasPrefix("http") {
-            session.saveServer(address)
-        }
-        server = address
 
         busy = true
         showCaptcha = true
