@@ -1,0 +1,561 @@
+﻿2026-09-26T08:15:44.9880290Z Current runner version: '2.337.0'
+2026-09-26T08:15:44.9897150Z ##[group]Runner Image Provisioner
+2026-09-26T08:15:44.9897730Z Hosted Compute Agent
+2026-09-26T08:15:44.9898100Z Version: 20260828.587
+2026-09-26T08:15:44.9898510Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-26T08:15:44.9898990Z Build Date: 2026-08-28T16:44:25Z
+2026-09-26T08:15:44.9899420Z Worker ID: {92d1b34a-3518-4e9b-b1b0-955ba348d9f7}
+2026-09-26T08:15:44.9899880Z Azure Region: westus
+2026-09-26T08:15:44.9900240Z ##[endgroup]
+2026-09-26T08:15:44.9901180Z ##[group]Operating System
+2026-09-26T08:15:44.9901570Z macOS
+2026-09-26T08:15:44.9901880Z 15.7.9
+2026-09-26T08:15:44.9902200Z 24G830
+2026-09-26T08:15:44.9902520Z ##[endgroup]
+2026-09-26T08:15:44.9902870Z ##[group]Runner Image
+2026-09-26T08:15:44.9903240Z Image: macos-15-arm64
+2026-09-26T08:15:44.9903600Z Version: 20260907.0337.1
+2026-09-26T08:15:44.9904430Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-09-26T08:15:44.9905450Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-09-26T08:15:44.9906100Z ##[endgroup]
+2026-09-26T08:15:44.9906880Z ##[group]GITHUB_TOKEN Permissions
+2026-09-26T08:15:44.9908090Z Contents: read
+2026-09-26T08:15:44.9908650Z Metadata: read
+2026-09-26T08:15:44.9909010Z Packages: read
+2026-09-26T08:15:44.9909480Z ##[endgroup]
+2026-09-26T08:15:44.9911670Z Secret source: Actions
+2026-09-26T08:15:44.9912450Z Cache mode: write
+2026-09-26T08:15:44.9913010Z Prepare workflow directory
+2026-09-26T08:15:45.0133410Z Prepare all required actions
+2026-09-26T08:15:45.0168770Z Getting action download info
+2026-09-26T08:15:45.1681950Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-09-26T08:15:45.6157080Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-09-26T08:15:45.8368270Z Complete job name: iOS 构建与单元测试
+2026-09-26T08:15:45.8833410Z ##[group]Run actions/checkout@v4
+2026-09-26T08:15:45.8834200Z with:
+2026-09-26T08:15:45.8834510Z   repository: lindedaoawa/GayTeam-Projects
+2026-09-26T08:15:45.8837160Z   token: ***
+2026-09-26T08:15:45.8837450Z   ssh-strict: true
+2026-09-26T08:15:45.8837740Z   ssh-user: git
+2026-09-26T08:15:45.8838040Z   persist-credentials: true
+2026-09-26T08:15:45.8838360Z   clean: true
+2026-09-26T08:15:45.8838660Z   sparse-checkout-cone-mode: true
+2026-09-26T08:15:45.8839000Z   fetch-depth: 1
+2026-09-26T08:15:45.8839300Z   fetch-tags: false
+2026-09-26T08:15:45.8839600Z   show-progress: true
+2026-09-26T08:15:45.8839900Z   lfs: false
+2026-09-26T08:15:45.8840170Z   submodules: false
+2026-09-26T08:15:45.8840480Z   set-safe-directory: true
+2026-09-26T08:15:45.8840820Z   allow-unsafe-pr-checkout: false
+2026-09-26T08:15:45.8841270Z ##[endgroup]
+2026-09-26T08:15:46.2658990Z Syncing repository: lindedaoawa/GayTeam-Projects
+2026-09-26T08:15:46.2660440Z ##[group]Getting Git version info
+2026-09-26T08:15:46.2661350Z Working directory is '/Users/runner/work/GayTeam-Projects/GayTeam-Projects'
+2026-09-26T08:15:46.2662250Z [command]/opt/homebrew/bin/git version
+2026-09-26T08:15:46.3169130Z git version 2.55.0
+2026-09-26T08:15:46.3183130Z ##[endgroup]
+2026-09-26T08:15:46.3189370Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/fd4ac7a8-e08b-4dbf-9560-f0a6480c128f/.gitconfig'
+2026-09-26T08:15:46.3195710Z Temporarily overriding HOME='/Users/runner/work/_temp/fd4ac7a8-e08b-4dbf-9560-f0a6480c128f' before making global git config changes
+2026-09-26T08:15:46.3196680Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-26T08:15:46.3199380Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/GayTeam-Projects/GayTeam-Projects
+2026-09-26T08:15:46.3352550Z Deleting the contents of '/Users/runner/work/GayTeam-Projects/GayTeam-Projects'
+2026-09-26T08:15:46.3354890Z ##[group]Initializing the repository
+2026-09-26T08:15:46.3358800Z [command]/opt/homebrew/bin/git init /Users/runner/work/GayTeam-Projects/GayTeam-Projects
+2026-09-26T08:15:46.3566360Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-26T08:15:46.3567300Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-26T08:15:46.3568110Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-26T08:15:46.3568730Z hint: call:
+2026-09-26T08:15:46.3569060Z hint:
+2026-09-26T08:15:46.3569450Z hint: 	git config --global init.defaultBranch <name>
+2026-09-26T08:15:46.3570000Z hint:
+2026-09-26T08:15:46.3570440Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-26T08:15:46.3571160Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-26T08:15:46.3571720Z hint:
+2026-09-26T08:15:46.3572050Z hint: 	git branch -m <name>
+2026-09-26T08:15:46.3572410Z hint:
+2026-09-26T08:15:46.3572920Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-26T08:15:46.3573730Z Initialized empty Git repository in /Users/runner/work/GayTeam-Projects/GayTeam-Projects/.git/
+2026-09-26T08:15:46.3576180Z [command]/opt/homebrew/bin/git remote add origin https://github.com/lindedaoawa/GayTeam-Projects
+2026-09-26T08:15:46.3641420Z ##[endgroup]
+2026-09-26T08:15:46.3642100Z ##[group]Disabling automatic garbage collection
+2026-09-26T08:15:46.3643730Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-09-26T08:15:46.3697650Z ##[endgroup]
+2026-09-26T08:15:46.3698250Z ##[group]Setting up auth
+2026-09-26T08:15:46.3701990Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-26T08:15:46.3757710Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-26T08:15:46.4859490Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-26T08:15:46.4928430Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-26T08:15:46.5625230Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-26T08:15:46.5682980Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-26T08:15:46.6449970Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-26T08:15:46.6696000Z ##[endgroup]
+2026-09-26T08:15:46.6697160Z ##[group]Fetching the repository
+2026-09-26T08:15:46.6702700Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5c512ad4f9253d38b9673117026588ae1063e28e:refs/remotes/origin/main
+2026-09-26T08:15:49.1636660Z From https://github.com/lindedaoawa/GayTeam-Projects
+2026-09-26T08:15:49.1637810Z  * [new ref]         5c512ad4f9253d38b9673117026588ae1063e28e -> origin/main
+2026-09-26T08:15:49.1640090Z ##[endgroup]
+2026-09-26T08:15:49.1641040Z ##[group]Determining the checkout info
+2026-09-26T08:15:49.1641920Z ##[endgroup]
+2026-09-26T08:15:49.1645830Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-09-26T08:15:49.1723080Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-26T08:15:49.1795410Z ##[group]Checking out the ref
+2026-09-26T08:15:49.1802080Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-26T08:15:49.2184870Z Switched to a new branch 'main'
+2026-09-26T08:15:49.2196490Z branch 'main' set up to track 'origin/main'.
+2026-09-26T08:15:49.2205670Z ##[endgroup]
+2026-09-26T08:15:49.2309290Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-09-26T08:15:49.2380130Z 5c512ad4f9253d38b9673117026588ae1063e28e
+2026-09-26T08:15:49.2582010Z ##[group]Run sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+2026-09-26T08:15:49.2583310Z [36;1msudo xcode-select -s /Applications/Xcode.app/Contents/Developer[0m
+2026-09-26T08:15:49.2584260Z [36;1mxcodebuild -version[0m
+2026-09-26T08:15:49.2641020Z shell: /bin/bash -e {0}
+2026-09-26T08:15:49.2641930Z ##[endgroup]
+2026-09-26T08:15:50.4275780Z Xcode 16.4
+2026-09-26T08:15:50.4277230Z Build version 16F6
+2026-09-26T08:15:50.4330410Z ##[group]Run brew install xcodegen
+2026-09-26T08:15:50.4330770Z [36;1mbrew install xcodegen[0m
+2026-09-26T08:15:50.4369440Z shell: /bin/bash -e {0}
+2026-09-26T08:15:50.4369680Z ##[endgroup]
+2026-09-26T08:15:52.4507190Z [32m==>[0m [1mDownloading bottle manifests[0m
+2026-09-26T08:15:52.4667340Z ✔︎ Bottle Manifest xcodegen (2.46.0)
+2026-09-26T08:15:52.4667860Z [34m==>[0m [1mWould install 1 formula:[0m
+2026-09-26T08:15:52.4668790Z [32m==>[0m [1mFetching downloads for: [32mxcodegen[39m[0m
+2026-09-26T08:15:52.4669180Z xcodegen
+2026-09-26T08:15:52.7869570Z ✔︎ Bottle xcodegen (2.46.0)
+2026-09-26T08:15:52.8207470Z [34m==>[0m [1mPouring xcodegen--2.46.0.arm64_sequoia.bottle.1.tar.gz[0m
+2026-09-26T08:15:52.9164570Z 🍺  /opt/homebrew/Cellar/xcodegen/2.46.0: 38 files, 7.5MB
+2026-09-26T08:15:52.9266510Z ##[group]Run xcodegen generate
+2026-09-26T08:15:52.9266840Z [36;1mxcodegen generate[0m
+2026-09-26T08:15:52.9301810Z shell: /bin/bash -e {0}
+2026-09-26T08:15:52.9302030Z ##[endgroup]
+2026-09-26T08:15:52.9729810Z ⚙️  Generating plists...
+2026-09-26T08:15:52.9730660Z ⚙️  Generating project...
+2026-09-26T08:15:52.9820180Z ⚙️  Writing project...
+2026-09-26T08:15:52.9893620Z Created project at /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:15:52.9929110Z ##[group]Run for NAME in "iPhone 16" "iPhone 15" "iPhone 14" "iPhone SE (3rd generation)"; do
+2026-09-26T08:15:52.9929720Z [36;1mfor NAME in "iPhone 16" "iPhone 15" "iPhone 14" "iPhone SE (3rd generation)"; do[0m
+2026-09-26T08:15:52.9930240Z [36;1m  if xcrun simctl list devices available | grep -qF "$NAME ("; then[0m
+2026-09-26T08:15:52.9930830Z [36;1m    echo "destination=platform=iOS Simulator,name=$NAME,OS=latest" >> "$GITHUB_OUTPUT"[0m
+2026-09-26T08:15:52.9931210Z [36;1m    echo "使用模拟器: $NAME"[0m
+2026-09-26T08:15:52.9931420Z [36;1m    exit 0[0m
+2026-09-26T08:15:52.9931690Z [36;1m  fi[0m
+2026-09-26T08:15:52.9931850Z [36;1mdone[0m
+2026-09-26T08:15:52.9932090Z [36;1mecho "未找到可用模拟器" >&2[0m
+2026-09-26T08:15:52.9932310Z [36;1mxcrun simctl list devices available >&2[0m
+2026-09-26T08:15:52.9932550Z [36;1mexit 1[0m
+2026-09-26T08:15:52.9967490Z shell: /bin/bash -e {0}
+2026-09-26T08:15:52.9967730Z ##[endgroup]
+2026-09-26T08:16:15.3225220Z 使用模拟器: iPhone 16
+2026-09-26T08:16:15.3339450Z ##[group]Run xcodebuild test \
+2026-09-26T08:16:15.3340100Z [36;1mxcodebuild test \[0m
+2026-09-26T08:16:15.3340450Z [36;1m  -project GayMail.xcodeproj \[0m
+2026-09-26T08:16:15.3340790Z [36;1m  -scheme GayMail \[0m
+2026-09-26T08:16:15.3341170Z [36;1m  -destination "platform=iOS Simulator,name=iPhone 16,OS=latest" \[0m
+2026-09-26T08:16:15.3341720Z [36;1m  -resultBundlePath build/TestResults.xcresult \[0m
+2026-09-26T08:16:15.3342080Z [36;1m  CODE_SIGNING_ALLOWED=NO \[0m
+2026-09-26T08:16:15.3342430Z [36;1m  CODE_SIGNING_REQUIRED=NO \[0m
+2026-09-26T08:16:15.3342690Z [36;1m  CODE_SIGN_IDENTITY=""[0m
+2026-09-26T08:16:15.4818450Z shell: /bin/bash -e {0}
+2026-09-26T08:16:15.4818760Z ##[endgroup]
+2026-09-26T08:16:17.6489370Z Command line invocation:
+2026-09-26T08:16:17.6495460Z     /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild test -project GayMail.xcodeproj -scheme GayMail -destination "platform=iOS Simulator,name=iPhone 16,OS=latest" -resultBundlePath build/TestResults.xcresult CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=
+2026-09-26T08:16:17.6496680Z 
+2026-09-26T08:16:17.6497030Z Build settings from command line:
+2026-09-26T08:16:17.6497390Z     CODE_SIGN_IDENTITY = 
+2026-09-26T08:16:17.6497620Z     CODE_SIGNING_ALLOWED = NO
+2026-09-26T08:16:17.6503320Z     CODE_SIGNING_REQUIRED = NO
+2026-09-26T08:16:17.6504030Z 
+2026-09-26T08:16:18.0788730Z Writing result bundle at path:
+2026-09-26T08:16:18.0817450Z 	/Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/build/TestResults.xcresult
+2026-09-26T08:16:18.0819630Z 
+2026-09-26T08:16:18.1217900Z --- xcodebuild: WARNING: Using the first of multiple matching destinations:
+2026-09-26T08:16:18.1304630Z { platform:iOS Simulator, arch:arm64, id:2911FD29-A09E-4A81-BEA7-99A616FB7FC8, OS:26.2, name:iPhone 16 }
+2026-09-26T08:16:18.1349790Z { platform:iOS Simulator, arch:x86_64, id:2911FD29-A09E-4A81-BEA7-99A616FB7FC8, OS:26.2, name:iPhone 16 }
+2026-09-26T08:16:18.4728010Z note: Using codesigning identity override: 
+2026-09-26T08:16:18.8617350Z ComputePackagePrebuildTargetDependencyGraph
+2026-09-26T08:16:18.9335490Z 
+2026-09-26T08:16:18.9379690Z Prepare packages
+2026-09-26T08:16:18.9409700Z 
+2026-09-26T08:16:18.9415340Z CreateBuildRequest
+2026-09-26T08:16:18.9418220Z 
+2026-09-26T08:16:18.9429380Z SendProjectDescription
+2026-09-26T08:16:18.9501310Z 
+2026-09-26T08:16:18.9501960Z CreateBuildOperation
+2026-09-26T08:16:18.9597760Z 
+2026-09-26T08:16:18.9614200Z ComputeTargetDependencyGraph
+2026-09-26T08:16:18.9868420Z note: Building targets in dependency order
+2026-09-26T08:16:18.9868760Z note: Target dependency graph (2 targets)
+2026-09-26T08:16:18.9869140Z     Target 'GayMailTests' in project 'GayMail'
+2026-09-26T08:16:18.9870030Z         ➜ Explicit dependency on target 'GayMail' in project 'GayMail'
+2026-09-26T08:16:18.9870460Z     Target 'GayMail' in project 'GayMail' (no dependencies)
+2026-09-26T08:16:18.9877550Z 
+2026-09-26T08:16:18.9878740Z GatherProvisioningInputs
+2026-09-26T08:16:18.9879440Z 
+2026-09-26T08:16:18.9953250Z CreateBuildDescription
+2026-09-26T08:16:19.0207700Z 
+2026-09-26T08:16:19.0209190Z ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets
+2026-09-26T08:16:21.1447400Z 
+2026-09-26T08:16:21.1473220Z ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+2026-09-26T08:16:21.1476550Z 
+2026-09-26T08:16:21.1481130Z ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -x c -c /dev/null
+2026-09-26T08:16:21.1483300Z 
+2026-09-26T08:16:21.1485880Z ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+2026-09-26T08:16:21.1486690Z 
+2026-09-26T08:16:21.1487100Z ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+2026-09-26T08:16:21.1519720Z 
+2026-09-26T08:16:21.1733330Z Build description signature: 7cd036bfc6706279288b95e89b460ff2
+2026-09-26T08:16:21.1792490Z Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/XCBuildData/7cd036bfc6706279288b95e89b460ff2.xcbuilddata
+2026-09-26T08:16:21.2239080Z CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products
+2026-09-26T08:16:21.2276910Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:16:21.2278270Z     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products
+2026-09-26T08:16:21.2284390Z 
+2026-09-26T08:16:21.2287110Z ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache
+2026-09-26T08:16:21.2291060Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:16:21.2293390Z     /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache
+2026-09-26T08:16:23.5484830Z 
+2026-09-26T08:16:23.5485930Z CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex
+2026-09-26T08:16:23.5487090Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:16:23.5488140Z     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex
+2026-09-26T08:16:23.5489450Z 
+2026-09-26T08:16:23.5490610Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail-a2aa354d3c4f3fc087bade7d453e7480-VFS-iphonesimulator/all-product-headers.yaml
+2026-09-26T08:16:23.5493090Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:16:23.5494610Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail-a2aa354d3c4f3fc087bade7d453e7480-VFS-iphonesimulator/all-product-headers.yaml
+2026-09-26T08:16:23.5495860Z 
+2026-09-26T08:16:23.5496930Z CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator
+2026-09-26T08:16:23.5497970Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:16:23.5499550Z     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator
+2026-09-26T08:16:23.5500210Z 
+2026-09-26T08:16:23.5500800Z CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+2026-09-26T08:16:23.5501720Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail.xcodeproj
+2026-09-26T08:16:23.5506080Z     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+2026-09-26T08:16:23.5509920Z 
+2026-09-26T08:16:23.5511140Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/empty-GayMailTests.plist (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5512590Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5514060Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/empty-GayMailTests.plist
+2026-09-26T08:16:23.5515150Z 
+2026-09-26T08:16:23.5516070Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail_const_extract_protocols.json (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5517360Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5518500Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail_const_extract_protocols.json
+2026-09-26T08:16:23.5520350Z 
+2026-09-26T08:16:23.5521210Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests_const_extract_protocols.json (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5522410Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5523440Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests_const_extract_protocols.json
+2026-09-26T08:16:23.5524350Z 
+2026-09-26T08:16:23.5525300Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests.SwiftConstValuesFileList (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5526520Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5527490Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests.SwiftConstValuesFileList
+2026-09-26T08:16:23.5528310Z 
+2026-09-26T08:16:23.5529230Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests.SwiftFileList (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5530960Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5533790Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests.SwiftFileList
+2026-09-26T08:16:23.5535270Z 
+2026-09-26T08:16:23.5536270Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests.LinkFileList (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5537360Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5538610Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests.LinkFileList
+2026-09-26T08:16:23.5539470Z 
+2026-09-26T08:16:23.5540660Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests.hmap (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5541700Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5542590Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests.hmap
+2026-09-26T08:16:23.5543430Z 
+2026-09-26T08:16:23.5544340Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests.DependencyStaticMetadataFileList (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5547230Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5548610Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests.DependencyStaticMetadataFileList
+2026-09-26T08:16:23.5549440Z 
+2026-09-26T08:16:23.5550260Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests.DependencyMetadataFileList (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5551540Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5553390Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests.DependencyMetadataFileList
+2026-09-26T08:16:23.5554150Z 
+2026-09-26T08:16:23.5555020Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-project-headers.hmap (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5556170Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5557420Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-project-headers.hmap
+2026-09-26T08:16:23.5558240Z 
+2026-09-26T08:16:23.5559210Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-own-target-headers.hmap (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5561250Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5562170Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-own-target-headers.hmap
+2026-09-26T08:16:23.5563110Z 
+2026-09-26T08:16:23.5564030Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests-OutputFileMap.json (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5565300Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5567050Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/Objects-normal/arm64/GayMailTests-OutputFileMap.json
+2026-09-26T08:16:23.5567930Z 
+2026-09-26T08:16:23.5568850Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-generated-files.hmap (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5569900Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5570840Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-generated-files.hmap
+2026-09-26T08:16:23.5571600Z 
+2026-09-26T08:16:23.5572540Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-all-target-headers.hmap (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5573710Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5574880Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-all-target-headers.hmap
+2026-09-26T08:16:23.5575700Z 
+2026-09-26T08:16:23.5576550Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-all-non-framework-target-headers.hmap (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5577780Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5578790Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMailTests.build/GayMailTests-all-non-framework-target-headers.hmap
+2026-09-26T08:16:23.5580230Z 
+2026-09-26T08:16:23.5581220Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.SwiftFileList (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5582480Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5583670Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.SwiftFileList
+2026-09-26T08:16:23.5584520Z 
+2026-09-26T08:16:23.5585480Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.SwiftConstValuesFileList (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5586690Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5587720Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.SwiftConstValuesFileList
+2026-09-26T08:16:23.5588600Z 
+2026-09-26T08:16:23.5589520Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.LinkFileList (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5590710Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5592130Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.LinkFileList
+2026-09-26T08:16:23.5593020Z 
+2026-09-26T08:16:23.5594240Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-OutputFileMap.json (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5596450Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5597530Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-OutputFileMap.json
+2026-09-26T08:16:23.5598360Z 
+2026-09-26T08:16:23.5599120Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail.hmap (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5600880Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5602080Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail.hmap
+2026-09-26T08:16:23.5604250Z 
+2026-09-26T08:16:23.5607500Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail.DependencyStaticMetadataFileList (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5611220Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5614110Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail.DependencyStaticMetadataFileList
+2026-09-26T08:16:23.5615800Z 
+2026-09-26T08:16:23.5621720Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail.DependencyMetadataFileList (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5623180Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5624420Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail.DependencyMetadataFileList
+2026-09-26T08:16:23.5625320Z 
+2026-09-26T08:16:23.5626170Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-project-headers.hmap (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5627500Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5628380Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-project-headers.hmap
+2026-09-26T08:16:23.5629150Z 
+2026-09-26T08:16:23.5630160Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-own-target-headers.hmap (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5631160Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5632430Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-own-target-headers.hmap
+2026-09-26T08:16:23.5633120Z 
+2026-09-26T08:16:23.5633930Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-generated-files.hmap (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5635040Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5635850Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-generated-files.hmap
+2026-09-26T08:16:23.5636510Z 
+2026-09-26T08:16:23.5638830Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-all-target-headers.hmap (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5640470Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5701880Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-all-target-headers.hmap
+2026-09-26T08:16:23.5703360Z 
+2026-09-26T08:16:23.5704230Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-all-non-framework-target-headers.hmap (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5705440Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5706300Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-all-non-framework-target-headers.hmap
+2026-09-26T08:16:23.5707130Z 
+2026-09-26T08:16:23.5708120Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-DebugDylibPath-normal-arm64.txt (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5709470Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5710440Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-DebugDylibPath-normal-arm64.txt
+2026-09-26T08:16:23.5711140Z 
+2026-09-26T08:16:23.5712000Z WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-DebugDylibInstallName-normal-arm64.txt (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5713040Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5713950Z     write-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-DebugDylibInstallName-normal-arm64.txt
+2026-09-26T08:16:23.5714680Z 
+2026-09-26T08:16:23.5715290Z MkDir /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/PlugIns/GayMailTests.xctest (in target 'GayMailTests' from project 'GayMail')
+2026-09-26T08:16:23.5716190Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5716920Z     /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/PlugIns/GayMailTests.xctest
+2026-09-26T08:16:23.5718050Z 
+2026-09-26T08:16:23.5718910Z MkDir /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/PlugIns (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5719930Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5720700Z     /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/PlugIns
+2026-09-26T08:16:23.5721330Z 
+2026-09-26T08:16:23.5721900Z MkDir /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5722720Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5723780Z     /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5724330Z 
+2026-09-26T08:16:23.5724880Z MkDir /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5725720Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5726630Z     /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app
+2026-09-26T08:16:23.5727110Z 
+2026-09-26T08:16:23.5727700Z Ld /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/__preview.dylib normal (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5728490Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5732250Z     /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios15.0-simulator -dynamiclib -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator -install_name @rpath/GayMail.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail_dependency_info.dat -o /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/__preview.dylib
+2026-09-26T08:16:23.5735790Z 
+2026-09-26T08:16:23.5736480Z MkDir /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/unthinned (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5737420Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5738220Z     /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/unthinned
+2026-09-26T08:16:23.5738940Z 
+2026-09-26T08:16:23.5739750Z MkDir /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5740660Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5741690Z     /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned
+2026-09-26T08:16:23.5742410Z 
+2026-09-26T08:16:23.5742830Z GenerateAssetSymbols /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5743460Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5749440Z     /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets --compile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_dependencies --output-partial-info-plist /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 15.0 --platform iphonesimulator --bundle-identifier org.mort.gaymail --generate-swift-asset-symbol-extensions NO --generate-swift-asset-symbols /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+2026-09-26T08:16:23.5755770Z /* com.apple.actool.compilation-results */
+2026-09-26T08:16:23.5756560Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+2026-09-26T08:16:23.5757920Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.h
+2026-09-26T08:16:23.5759200Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.swift
+2026-09-26T08:16:23.5759870Z 
+2026-09-26T08:16:23.5759870Z 
+2026-09-26T08:16:23.5760990Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/libXCTestSwiftSupport.dylib /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5762610Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5764460Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5765870Z 
+2026-09-26T08:16:23.5766940Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/libXCTestBundleInject.dylib /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5768210Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5769730Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5771110Z 
+2026-09-26T08:16:23.5772110Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/XCUnit.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5773550Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5775130Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5776600Z 
+2026-09-26T08:16:23.5777650Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/XCUIAutomation.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5778910Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5780430Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5781820Z 
+2026-09-26T08:16:23.5782890Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/XCTestSupport.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5784150Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5785680Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5787350Z 
+2026-09-26T08:16:23.5788430Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/XCTestCore.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5790060Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5791760Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5793210Z 
+2026-09-26T08:16:23.5794300Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/XCTest.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5795730Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5797250Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5800370Z 
+2026-09-26T08:16:23.5801590Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/XCTAutomationSupport.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5802960Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5804550Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5806180Z 
+2026-09-26T08:16:23.5807200Z Copy /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks/Testing.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5808430Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5810050Z     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Frameworks
+2026-09-26T08:16:23.5811480Z 
+2026-09-26T08:16:23.5812690Z CompileAssetCatalogVariant thinned /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:23.5813880Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:23.5818090Z     /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets --compile /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone17,3 --filter-for-device-os-version 26.2 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 15.0 --platform iphonesimulator
+2026-09-26T08:16:29.4772140Z /* com.apple.actool.document.notices */
+2026-09-26T08:16:29.4818030Z /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets:./AppIcon.appiconset/[][ipad][76x76][][][1x][][][][]: notice: 76x76@1x app icons only apply to iPad apps targeting releases of iOS prior to 10.0.
+2026-09-26T08:16:29.4868010Z /* com.apple.actool.compilation-results */
+2026-09-26T08:16:29.4869950Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_generated_info.plist_thinned
+2026-09-26T08:16:29.4971750Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+2026-09-26T08:16:29.4985130Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+2026-09-26T08:16:29.4998450Z /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned/Assets.car
+2026-09-26T08:16:29.5028200Z 
+2026-09-26T08:16:29.5028780Z 
+2026-09-26T08:16:29.5030260Z SwiftDriver GayMail normal arm64 com.apple.xcode.tools.swift.compiler (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:29.5035550Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:29.5065650Z     builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name GayMail -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios15.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-Swift.h -working-directory /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios -experimental-emit-module-separately -disable-cmo
+2026-09-26T08:16:29.5107470Z 
+2026-09-26T08:16:29.5113170Z SwiftEmitModule normal arm64 Emitting\ module\ for\ GayMail (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:29.5145530Z EmitSwiftModule normal arm64 (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:29.5252550Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:29.5253510Z     
+2026-09-26T08:16:30.1952350Z /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/ComposeView.swift:36:9: error: invalid redeclaration of 'body'
+2026-09-26T08:16:30.1970240Z     var body: some View {
+2026-09-26T08:16:30.1975720Z         ^
+2026-09-26T08:16:30.1976810Z /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/ComposeView.swift:21:24: note: 'body' previously declared here
+2026-09-26T08:16:30.1978370Z     @State private var body = ""
+2026-09-26T08:16:30.1980170Z                        ^
+2026-09-26T08:16:30.1981110Z /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/ComposeView.swift:21:24: note: 'body' previously declared here
+2026-09-26T08:16:30.1982000Z     @State private var body = ""
+2026-09-26T08:16:30.1987510Z                        ^
+2026-09-26T08:16:30.1987840Z 
+2026-09-26T08:16:30.1988290Z Failed frontend command:
+2026-09-26T08:16:30.2016900Z /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -emit-module -experimental-skip-non-inlinable-function-bodies-without-types /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/API/ApiClient.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/API/ApiError.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/ComposeView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/App/GayMailApp.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Components/HCaptchaView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Components/HTMLView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Storage/KeychainStore.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Models/L10n.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/LoginView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/MailDetailView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/MailListView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Models/Models.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Storage/SessionStore.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Components/ShareSheet.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/Theme.swift /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.swift -target arm64-apple-ios15.0-simulator -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -I /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator -no-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -profile-generate -profile-coverage-mapping -swift-version 5 -enforce-exclusivity\=checked -Onone -D DEBUG -serialize-debugging-options -const-gather-protocols-file /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios -resource-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -enable-anonymous-context-mangled-names -file-compilation-dir /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/GayMail-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources -Xcc -DDEBUG\=1 -module-name GayMail -frontend-parseable-output -disable-clang-spi -target-sdk-version 18.5 -target-sdk-name iphonesimulator18.5 -external-plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins\#/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/lib/swift/host/plugins\#/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -in-process-plugin-server-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/lib/swift/host/plugins -emit-module-doc-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.swiftdoc -emit-module-source-info-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.swiftsourceinfo -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-Swift.h -serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-master-emit-module.dia -emit-dependencies-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail-master-emit-module.d -o /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.swiftmodule -emit-abi-descriptor-path /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/Objects-normal/arm64/GayMail.abi.json
+2026-09-26T08:16:30.2069470Z SwiftCompile normal arm64 Compiling\ Models.swift,\ SessionStore.swift,\ ShareSheet.swift,\ Theme.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Models/Models.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Storage/SessionStore.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Components/ShareSheet.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/Theme.swift /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2076330Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Models/Models.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2078430Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2082300Z     
+2026-09-26T08:16:30.2083420Z 
+2026-09-26T08:16:30.2084850Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Storage/SessionStore.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2087480Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2088700Z     
+2026-09-26T08:16:30.2089080Z 
+2026-09-26T08:16:30.2090620Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Components/ShareSheet.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2091900Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2093410Z     
+2026-09-26T08:16:30.2093760Z 
+2026-09-26T08:16:30.2094370Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/Theme.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2095530Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2096570Z     
+2026-09-26T08:16:30.2097670Z 
+2026-09-26T08:16:30.2099570Z SwiftCompile normal arm64 /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2102030Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2102410Z     
+2026-09-26T08:16:30.2102800Z 
+2026-09-26T08:16:30.2105180Z SwiftCompile normal arm64 Compiling\ KeychainStore.swift,\ L10n.swift,\ LoginView.swift,\ MailDetailView.swift,\ MailListView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Storage/KeychainStore.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Models/L10n.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/LoginView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/MailDetailView.swift /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/MailListView.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2108280Z 
+2026-09-26T08:16:30.2109670Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Storage/KeychainStore.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2110640Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2111050Z     
+2026-09-26T08:16:30.2111230Z 
+2026-09-26T08:16:30.2111740Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Models/L10n.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2112500Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2112870Z     
+2026-09-26T08:16:30.2113060Z 
+2026-09-26T08:16:30.2113550Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/LoginView.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2114320Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2114690Z     
+2026-09-26T08:16:30.2114870Z 
+2026-09-26T08:16:30.2115390Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/MailDetailView.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2116140Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2116550Z     
+2026-09-26T08:16:30.2116950Z 
+2026-09-26T08:16:30.2117420Z SwiftCompile normal arm64 /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Views/MailListView.swift (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2118190Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2118570Z     
+2026-09-26T08:16:30.2118720Z 
+2026-09-26T08:16:30.2119220Z LinkAssetCatalog /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/GayMail/Resources/Assets.xcassets (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2119980Z     cd /Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios
+2026-09-26T08:16:30.2125830Z     builtin-linkAssetCatalog --thinned /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/thinned --thinned-dependencies /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_generated_info.plist_unthinned --output /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app --plist-output /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Intermediates.noindex/GayMail.build/Debug-iphonesimulator/GayMail.build/assetcatalog_generated_info.plist
+2026-09-26T08:16:30.2135030Z note: Emplaced /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/Assets.car (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2136990Z note: Emplaced /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/AppIcon76x76@2x~ipad.png (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2148440Z note: Emplaced /Users/runner/Library/Developer/Xcode/DerivedData/GayMail-dajtqqhlxvwemcgobkhurliieakv/Build/Products/Debug-iphonesimulator/GayMail.app/AppIcon60x60@2x.png (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2150190Z 
+2026-09-26T08:16:30.2404000Z Testing failed:
+2026-09-26T08:16:30.2404140Z 
+2026-09-26T08:16:30.2404510Z 	Invalid redeclaration of 'body'
+2026-09-26T08:16:30.2404820Z Test session results, code coverage, and logs:
+2026-09-26T08:16:30.2405290Z 	Testing cancelled because the build failed.
+2026-09-26T08:16:30.2405720Z 	/Users/runner/work/GayTeam-Projects/GayTeam-Projects/ios/build/TestResults.xcresult
+2026-09-26T08:16:30.2406050Z 
+2026-09-26T08:16:30.2406060Z 
+2026-09-26T08:16:30.2406230Z ** TEST FAILED **
+2026-09-26T08:16:30.2406550Z 
+2026-09-26T08:16:30.2406610Z 
+2026-09-26T08:16:30.2406810Z The following build commands failed:
+2026-09-26T08:16:30.2407180Z 	EmitSwiftModule normal arm64 (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2407700Z 	SwiftEmitModule normal arm64 Emitting\ module\ for\ GayMail (in target 'GayMail' from project 'GayMail')
+2026-09-26T08:16:30.2408120Z 	Testing project GayMail with scheme GayMail
+2026-09-26T08:16:30.2408850Z (3 failures)
+2026-09-26T08:16:30.3768270Z ##[error]Process completed with exit code 65.
+2026-09-26T08:16:30.3903440Z ##[group]Run actions/upload-artifact@v4
+2026-09-26T08:16:30.3903770Z with:
+2026-09-26T08:16:30.3903960Z   name: GayMail-test-results
+2026-09-26T08:16:30.3904280Z   path: ios/build/TestResults.xcresult
+2026-09-26T08:16:30.3904580Z   if-no-files-found: ignore
+2026-09-26T08:16:30.3904800Z   retention-days: 7
+2026-09-26T08:16:30.3905070Z   compression-level: 6
+2026-09-26T08:16:30.3905260Z   overwrite: false
+2026-09-26T08:16:30.3905550Z   include-hidden-files: false
+2026-09-26T08:16:30.3905790Z ##[endgroup]
+2026-09-26T08:16:30.8282750Z (node:12269) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-26T08:16:30.8309730Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-26T08:16:30.8376800Z With the provided path, there will be 17 files uploaded
+2026-09-26T08:16:30.8377810Z Artifact name is valid!
+2026-09-26T08:16:30.8378890Z Root directory input is valid!
+2026-09-26T08:16:31.0437590Z Beginning upload of artifact content to blob storage
+2026-09-26T08:16:31.0663090Z (node:12269) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-26T08:16:31.1203390Z Uploaded bytes 19060
+2026-09-26T08:16:31.1348570Z Finished uploading artifact content to blob storage!
+2026-09-26T08:16:31.1351080Z SHA256 digest of uploaded artifact zip is ac01b06e69c62bbad1655ce893aa058f7c851e1a86b65539f2630331a5b81eb1
+2026-09-26T08:16:31.1351680Z Finalizing artifact upload
+2026-09-26T08:16:31.3819420Z Artifact GayMail-test-results.zip successfully finalized. Artifact ID 10901741615
+2026-09-26T08:16:31.3820130Z Artifact GayMail-test-results has been successfully uploaded! Final size is 19060 bytes. Artifact ID is 10901741615
+2026-09-26T08:16:31.3824630Z Artifact download URL: https://github.com/lindedaoawa/GayTeam-Projects/actions/runs/36229243059/artifacts/10901741615
+2026-09-26T08:16:31.3966490Z Post job cleanup.
+2026-09-26T08:16:31.4856090Z [command]/opt/homebrew/bin/git version
+2026-09-26T08:16:31.5268010Z git version 2.55.0
+2026-09-26T08:16:31.5284250Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/5ed55b6b-dfbf-4d28-b1e2-b4c7d1fcffa9/.gitconfig'
+2026-09-26T08:16:31.5290550Z Temporarily overriding HOME='/Users/runner/work/_temp/5ed55b6b-dfbf-4d28-b1e2-b4c7d1fcffa9' before making global git config changes
+2026-09-26T08:16:31.5291610Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-26T08:16:31.5294520Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/GayTeam-Projects/GayTeam-Projects
+2026-09-26T08:16:31.5401360Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-26T08:16:31.5456160Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-26T08:16:31.6516990Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-26T08:16:31.6579150Z http.https://github.com/.extraheader
+2026-09-26T08:16:31.6586660Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-26T08:16:31.6691110Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-26T08:16:31.7441320Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-26T08:16:31.7456240Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-26T08:16:31.8481890Z Cleaning up orphan processes
+2026-09-26T08:16:31.9077890Z Terminate orphan process: pid (11978) (ibtoold)
+2026-09-26T08:16:32.3923450Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
