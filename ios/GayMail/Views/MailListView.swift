@@ -14,12 +14,16 @@ struct MailListView: View {
     @State private var errorMessage: String?
 
     @State private var showCompose = false
+    @State private var showAdmin = false
     @State private var showServerDialog = false
     @State private var showLogoutConfirm = false
     @State private var quota: Quota?
     @State private var showQuota = false
     @State private var serverDraft = ""
     @State private var pendingDelete: MailItem?
+    @State private var showUpdateAlert = false
+    @State private var remoteUpdate: AppUpdate?
+    @State private var updateChecked = false
 
     private let perPage = 50
 
@@ -41,6 +45,9 @@ struct MailListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Button(L10n.menuQuota) { Task { await loadQuota() } }
+                        if session.isAdmin {
+                            Button(L10n.menuAdmin) { showAdmin = true }
+                        }
                         Button(L10n.menuSettings) { openServerDialog() }
                         Button(L10n.menuLogout, role: .destructive) { showLogoutConfirm = true }
                     } label: {
@@ -55,6 +62,9 @@ struct MailListView: View {
             }
             .sheet(isPresented: $showCompose) {
                 ComposeView()
+            }
+            .sheet(isPresented: $showAdmin) {
+                NavigationView { AdminView() }.environmentObject(session).navigationViewStyle(.stack)
             }
             .sheet(isPresented: $showServerDialog) { serverSheet }
             .alert(L10n.menuQuota, isPresented: $showQuota, presenting: quota) { _ in
@@ -76,9 +86,31 @@ struct MailListView: View {
                 }
                 Button(L10n.deleteCancel, role: .cancel) { pendingDelete = nil }
             }
+            .alert(isPresented: $showUpdateAlert) {
+                Alert(
+                    title: Text(String(format: L10n.updateFound, remoteUpdate?.version ?? "")),
+                    message: Text(remoteMessage),
+                    primaryButton: .default(Text(L10n.updateNow)) { openUpdateLink() },
+                    secondaryButton: .cancel(Text(L10n.updateLater))
+                )
+            }
         }
         .navigationViewStyle(.stack)
-        .task { refresh() }
+        .task {
+            await refreshAdminFlag()
+            refresh()
+            await checkUpdates()
+        }
+        .onAppear {
+            Task { await checkUpdates() }
+        }
+    }
+
+    private var remoteMessage: String {
+        guard let u = remoteUpdate else { return "" }
+        var text = u.content.isEmpty ? String(format: L10n.updateFound, u.version) : u.content
+        if !u.link.isEmpty { text += "\n\n\(u.link)" }
+        return text
     }
 
     // MARK: - 子视图
@@ -270,5 +302,35 @@ struct MailListView: View {
     private func openServerDialog() {
         serverDraft = session.server
         showServerDialog = true
+    }
+
+    // MARK: - 管理 & 更新
+
+    /// 对应 Android 端 `MainActivity.refreshAdminFlag`：启动时调用 `/api/me` 同步管理员状态
+    private func refreshAdminFlag() async {
+        do {
+            let isAdmin = try await session.api.me()
+            if isAdmin != session.isAdmin { session.setAdmin(isAdmin) }
+        } catch { /* 静默失败：401 等会在其它地方处理 */ }
+    }
+
+    /// 对应 Android 端 `UpdateChecker.check`
+    private func checkUpdates() async {
+        do {
+            guard let update = try await session.api.latestUpdate() else { return }
+            let current = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+            if UpdateChecker.isNewer(remote: update.version, current: current) {
+                await MainActor.run {
+                    remoteUpdate = update
+                    showUpdateAlert = true
+                }
+            }
+        } catch { /* 静默失败 */ }
+    }
+
+    private func openUpdateLink() {
+        guard let link = remoteUpdate?.link, !link.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              let url = URL(string: link) else { return }
+        UIApplication.shared.open(url)
     }
 }
