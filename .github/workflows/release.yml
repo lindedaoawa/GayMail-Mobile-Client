@@ -157,14 +157,16 @@ jobs:
         env:
           VERSION: ${{ github.event.inputs.version }}
         run: |
+          APK_FILE=$(ls dist/*.apk 2>/dev/null | head -n1 | xargs basename)
+          IPA_FILE=$(ls dist/*.ipa 2>/dev/null | head -n1 | xargs basename)
           cat > RELEASE_NOTES.md <<EOF
           ## GayMail Mobile Client ${VERSION}
 
           ### 下载
           | 平台 | 文件 | 说明 |
           | --- | --- | --- |
-          | iOS | \`GayMail-${VERSION}-unsigned.ipa\` | 未签名，需自行签名后安装 |
-          | Android | \`GayMail-1.0.0.apk\` | 原始 Android 客户端安装包 |
+          | iOS | \`${IPA_FILE}\` | 未签名，需自行签名后安装 |
+          | Android | \`${APK_FILE}\` | 官方 Android 客户端安装包 |
 
           ### iOS 安装说明
           本 IPA 为 **未签名** 产物，无法直接安装。请使用以下任一方式重签名后安装：

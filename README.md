@@ -42,7 +42,7 @@ GayMail 移动客户端。本项目包含 Android 原始客户端安装包，以
 ```
 .
 ├── android/                 # Android 原始安装包
-│   └── GayMail-1.0.0.apk
+│   └── GayMail-*.apk
 ├── ios/                     # Swift / SwiftUI 重写的 iOS 客户端
 │   ├── GayMail/
 │   │   ├── API/             # ApiClient、错误映射
@@ -84,14 +84,14 @@ xcodebuild archive \
 
 mkdir -p build/Payload
 cp -R build/GayMail.xcarchive/Products/Applications/GayMail.app build/Payload/
-(cd build && zip -qry GayMail-1.0.0-unsigned.ipa Payload)
+(cd build && zip -qry GayMail-*-unsigned.ipa Payload)
 ```
 
 最低部署版本：**iOS 15.0**（`IPHONEOS_DEPLOYMENT_TARGET = 15.0`）。
 
 ### Android
 
-`android/GayMail-1.0.0.apk` 为原客户端安装包，可直接安装，无需额外构建。
+`android/GayMail-*.apk` 为原客户端安装包，可直接安装，无需额外构建。
 
 ## CI / CD
 
@@ -106,7 +106,7 @@ cp -R build/GayMail.xcarchive/Products/Applications/GayMail.app build/Payload/
 
 ### Android
 
-下载 `GayMail-1.0.0.apk` 后直接安装（需允许「未知来源」安装）。
+下载 `GayMail-*.apk` 后直接安装（需允许「未知来源」安装）。
 
 ### iOS
 
