@@ -75,10 +75,12 @@ struct HCaptchaView: UIViewRepresentable {
 
         func observeContentSize(of webView: WKWebView) {
             observation = webView.scrollView.observe(\.contentSize, options: [.initial, .new]) { [weak self] scrollView, _ in
-                let value = scrollView.contentSize.height
+                let value = min(max(scrollView.contentSize.height, Self.minHeight), Self.maxHeight)
                 DispatchQueue.main.async {
                     guard let self else { return }
-                    self.height.wrappedValue = min(max(value, Self.minHeight), Self.maxHeight)
+                    // 高度变化小于 1pt 时忽略，避免 frame 与 contentSize 互相触发导致抖动
+                    guard abs(value - self.height.wrappedValue) > 1 else { return }
+                    self.height.wrappedValue = value
                 }
             }
         }

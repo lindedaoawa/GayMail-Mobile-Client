@@ -106,32 +106,36 @@ struct LoginView: View {
     }
 
     private var captchaSheet: some View {
-        VStack(spacing: 16) {
-            Text(L10n.loginCaptcha)
-                .font(.headline)
-            HCaptchaView(
-                siteKey: ApiClient.hcaptchaSiteKey,
-                token: $captchaToken,
-                errorMessage: $captchaError,
-                height: $captchaHeight
-            )
-            .frame(height: captchaHeight)
-            .id(captchaAttempt)
+        // 挑战面板较高，外层可滚动以保证内容完整可见
+        ScrollView {
+            VStack(spacing: 16) {
+                Text(L10n.loginCaptcha)
+                    .font(.headline)
+                HCaptchaView(
+                    siteKey: ApiClient.hcaptchaSiteKey,
+                    token: $captchaToken,
+                    errorMessage: $captchaError,
+                    height: $captchaHeight
+                )
+                .frame(height: captchaHeight)
+                .id(captchaAttempt)
 
-            if let captchaError {
-                Text("\(L10n.captchaFailed)：\(captchaError)")
-                    .font(.footnote)
-                    .foregroundColor(Color.gmDanger)
-                    .multilineTextAlignment(.center)
-            }
+                if let captchaError {
+                    Text("\(L10n.captchaFailed)：\(captchaError)")
+                        .font(.footnote)
+                        .foregroundColor(Color.gmDanger)
+                        .multilineTextAlignment(.center)
+                }
 
-            Button(L10n.deleteCancel) {
-                showCaptcha = false
-                reset()
+                Button(L10n.deleteCancel) {
+                    showCaptcha = false
+                    reset()
+                }
+                .foregroundColor(Color.gmText)
             }
-            .foregroundColor(Color.gmText)
+            .padding(24)
+            .frame(maxWidth: .infinity)
         }
-        .padding(24)
         .onChange(of: captchaToken) { token in
             guard let token, !token.isEmpty else { return }
             showCaptcha = false
