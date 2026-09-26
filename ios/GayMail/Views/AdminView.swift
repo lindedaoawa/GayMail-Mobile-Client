@@ -3,21 +3,24 @@ import SwiftUI
 // MARK: - 管理面板容器
 
 /// 管理面板，对应 Android 端 `org.mort.gaymail.admin.AdminActivity`。
+/// 使用 Picker(.segmented) 点选切换标签，**禁用横向滑动**，
+/// 避免与内部 List 左滑删除的手势冲突。
 struct AdminView: View {
     @EnvironmentObject private var session: SessionStore
     @State private var selection: Int = 0
 
     var body: some View {
-        TabView(selection: $selection) {
-            StatsTab().tag(0)
-            UsersTab().tag(1)
-            MailsTab().tag(2)
-            IpTab().tag(3)
-            TextTab(kind: .announcement).tag(4)
-            TextTab(kind: .slogan).tag(5)
-            UpdatesTab().tag(6)
+        Group {
+            switch selection {
+            case 0: StatsTab()
+            case 1: UsersTab()
+            case 2: MailsTab()
+            case 3: IpTab()
+            case 4: TextTab(kind: .announcement)
+            case 5: TextTab(kind: .slogan)
+            default: UpdatesTab()
+            }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
         .navigationTitle(L10n.menuAdmin)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
