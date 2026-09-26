@@ -18,7 +18,7 @@ struct ComposeView: View {
 
     @State private var to = ""
     @State private var subject = ""
-    @State private var body = ""
+    @State private var bodyText = ""
     @State private var attachments: [OutAttachment] = []
 
     @State private var sending = false
@@ -44,7 +44,7 @@ struct ComposeView: View {
                     TextField(L10n.composeSubject, text: $subject)
                 }
                 Section(header: Text(L10n.composeBody)) {
-                    TextEditor(text: $body)
+                    TextEditor(text: $bodyText)
                         .frame(minHeight: 180)
                 }
                 Section {
@@ -147,7 +147,7 @@ struct ComposeView: View {
         guard let seed else { return }
         if to.isEmpty { to = seed.to }
         if subject.isEmpty { subject = seed.subject }
-        if body.isEmpty { body = seed.body }
+        if bodyText.isEmpty { bodyText = seed.body }
     }
 
     private func startSend() {
@@ -176,7 +176,7 @@ struct ComposeView: View {
             try await session.api.send(
                 to: recipient,
                 subject: title,
-                body: body,
+                body: bodyText,
                 attachments: attachments,
                 captchaToken: captcha
             )
