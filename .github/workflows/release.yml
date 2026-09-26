@@ -150,7 +150,7 @@ jobs:
           mkdir -p dist
           find artifacts -type f -name "*.ipa" -exec cp {} dist/ \;
           find artifacts -type f -name "*.apk" -exec cp {} dist/ \;
-          cd dist && sha256sum * > SHA256SUMS.txt || true
+          (cd dist && sha256sum *.ipa *.apk > SHA256SUMS.txt)
           ls -lh dist/
 
       - name: 生成发布说明
