@@ -125,7 +125,8 @@ struct AdminMailPage: Equatable {
 }
 
 /// 管理面板邮件详情，对应 `org.mort.gaymail.api.AdminMailView`
-struct AdminMailView: Equatable {
+struct AdminMailView: Identifiable, Equatable {
+    var id: Int { item.id }
     let item: AdminMailRow
     let body: String
     let html: String

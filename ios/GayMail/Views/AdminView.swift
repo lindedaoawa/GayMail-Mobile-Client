@@ -229,7 +229,6 @@ private struct MailsTab: View {
     @State private var hasMore = true
     @State private var loading = false
     @State private var errorMessage: String?
-    @State private var detail: AdminMailView?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -238,7 +237,6 @@ private struct MailsTab: View {
         }
         .background(Color.gmBackground.ignoresSafeArea())
         .refreshable { await reload() }
-        .sheet(item: $detail) { AdminMailDetailSheet(view: $0) }
         .task(id: "adminMails") { await reload() }
         .task(id: query) { await reload() }
         .onReceive(NotificationCenter.default.publisher(for: .adminReload)) { note in
@@ -364,11 +362,6 @@ private struct AdminMailDetailView: View {
         do { detail = try await session.api.adminMailDetail(id: id) }
         catch { errorMessage = (error as? ApiError)?.errorDescription ?? error.localizedDescription }
     }
-}
-
-private struct AdminMailDetailSheet: View {
-    let view: AdminMailView
-    var body: some View { Text(view.item.subject) }
 }
 
 // MARK: - IP 黑名单
