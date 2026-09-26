@@ -13,8 +13,8 @@ struct AdminView: View {
             UsersTab().tag(1)
             MailsTab().tag(2)
             IpTab().tag(3)
-            AnnsTab().tag(4)
-            SlogansTab().tag(5)
+            TextTab(kind: .announcement).tag(4)
+            TextTab(kind: .slogan).tag(5)
             UpdatesTab().tag(6)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
@@ -563,9 +563,6 @@ private struct TextTab: View {
         } catch { errorMessage = (error as? ApiError)?.errorDescription ?? error.localizedDescription }
     }
 }
-
-private struct AnnsTab: View { var body: TextTab(kind: .announcement) }
-private struct SlogansTab: View { var body: TextTab(kind: .slogan) }
 
 private struct TextEditSheet: View {
     let kind: TextTab.TextKind
