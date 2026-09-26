@@ -1,0 +1,156 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    name: iOS 构建与单元测试
+    runs-on: macos-14
+    timeout-minutes: 40
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 选择 Xcode
+        run: |
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          xcodebuild -version
+
+      - name: 安装 XcodeGen
+        run: brew install xcodegen
+
+      - name: 生成 Xcode 工程
+        working-directory: ios
+        run: xcodegen generate
+
+      - name: 选择可用的 iOS 模拟器
+        id: sim
+        run: |
+          for NAME in "iPhone 16" "iPhone 15" "iPhone 14" "iPhone SE (3rd generation)"; do
+            if xcrun simctl list devices available | grep -qF "$NAME ("; then
+              echo "destination=platform=iOS Simulator,name=$NAME,OS=latest" >> "$GITHUB_OUTPUT"
+              echo "使用模拟器: $NAME"
+              exit 0
+            fi
+          done
+          echo "未找到可用模拟器" >&2
+          xcrun simctl list devices available >&2
+          exit 1
+
+      - name: 运行单元测试
+        working-directory: ios
+        run: |
+          xcodebuild test \
+            -project GayMail.xcodeproj \
+            -scheme GayMail \
+            -destination "${{ steps.sim.outputs.destination }}" \
+            -resultBundlePath build/TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: 归档并打包未签名 IPA
+        working-directory: ios
+        run: |
+          VERSION=$(grep -m1 'MARKETING_VERSION' project.yml | sed -E 's/.*"([^"]+)".*/\1/')
+          xcodebuild archive \
+            -project GayMail.xcodeproj \
+            -scheme GayMail \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath build/GayMail.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            ONLY_ACTIVE_ARCH=NO
+
+          rm -rf build/Payload
+          mkdir -p build/Payload
+          cp -R build/GayMail.xcarchive/Products/Applications/GayMail.app build/Payload/
+          (cd build && zip -qry "GayMail-${VERSION}-unsigned.ipa" Payload)
+          echo "IPA version: ${VERSION}"
+
+      - name: 校验 IPA 产物
+        working-directory: ios
+        run: |
+          IPA=$(ls build/*.ipa | head -n1)
+          echo "检查 $IPA"
+          unzip -l "$IPA" | grep -q "Payload/GayMail.app/GayMail"
+          unzip -l "$IPA" | grep -q "Payload/GayMail.app/Info.plist"
+
+          rm -rf build/verify && mkdir -p build/verify
+          unzip -q "$IPA" -d build/verify
+          MIN_OS=$(/usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' build/verify/Payload/GayMail.app/Info.plist)
+          echo "MinimumOSVersion = $MIN_OS"
+          test "$MIN_OS" = "15.0"
+          ls -lh "$IPA"
+
+      - name: 上传 IPA 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: GayMail-ipa
+          path: ios/build/*.ipa
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: 上传测试报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GayMail-test-results
+          path: ios/build/TestResults.xcresult
+          if-no-files-found: ignore
+          retention-days: 7
+
+  android:
+    name: Android 安装包校验
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: 校验 APK 完整性
+        run: |
+          APK=$(ls android/*.apk | head -n1)
+          echo "检查 $APK"
+          unzip -l "$APK" | grep -q "AndroidManifest.xml"
+          unzip -l "$APK" | grep -q "classes.dex"
+          sha256sum "$APK"
+          ls -lh "$APK"
+
+      - name: 读取 APK 元数据
+        run: |
+          APK=$(ls android/*.apk | head -n1)
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq aapt >/dev/null 2>&1 || true
+          if command -v aapt >/dev/null; then
+            aapt dump badging "$APK" | head -n 5
+          else
+            echo "aapt 不可用，跳过元数据读取"
+          fi
+
+      - name: 上传 APK 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: GayMail-apk
+          path: android/*.apk
+          if-no-files-found: error
+          retention-days: 14

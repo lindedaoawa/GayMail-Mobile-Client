@@ -1,0 +1,193 @@
+name: Release
+
+# 仅在人工确认无误后手动触发，同时发布 Android APK 与 iOS IPA。
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "发布版本号（用于 tag 与 IPA 文件名）"
+        required: true
+        default: "1.0.0"
+      prerelease:
+        description: "标记为预发布版本"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  ios:
+    name: 构建 iOS IPA
+    runs-on: macos-14
+    timeout-minutes: 40
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 选择 Xcode
+        run: |
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          xcodebuild -version
+
+      - name: 安装 XcodeGen
+        run: brew install xcodegen
+
+      - name: 生成 Xcode 工程
+        working-directory: ios
+        run: xcodegen generate
+
+      - name: 选择可用的 iOS 模拟器
+        id: sim
+        run: |
+          for NAME in "iPhone 16" "iPhone 15" "iPhone 14" "iPhone SE (3rd generation)"; do
+            if xcrun simctl list devices available | grep -qF "$NAME ("; then
+              echo "destination=platform=iOS Simulator,name=$NAME,OS=latest" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "未找到可用模拟器" >&2
+          exit 1
+
+      - name: 发布前回归测试
+        working-directory: ios
+        run: |
+          xcodebuild test \
+            -project GayMail.xcodeproj \
+            -scheme GayMail \
+            -destination "${{ steps.sim.outputs.destination }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: 归档并打包未签名 IPA
+        working-directory: ios
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          xcodebuild archive \
+            -project GayMail.xcodeproj \
+            -scheme GayMail \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath build/GayMail.xcarchive \
+            MARKETING_VERSION="$VERSION" \
+            CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            ONLY_ACTIVE_ARCH=NO
+
+          rm -rf build/Payload
+          mkdir -p build/Payload
+          cp -R build/GayMail.xcarchive/Products/Applications/GayMail.app build/Payload/
+          (cd build && zip -qry "GayMail-${VERSION}-unsigned.ipa" Payload)
+
+      - name: 校验 IPA 产物
+        working-directory: ios
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          IPA="build/GayMail-${VERSION}-unsigned.ipa"
+          test -f "$IPA"
+          unzip -l "$IPA" | grep -q "Payload/GayMail.app/GayMail"
+          rm -rf build/verify && mkdir -p build/verify
+          unzip -q "$IPA" -d build/verify
+          /usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' build/verify/Payload/GayMail.app/Info.plist
+          test "$(/usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' build/verify/Payload/GayMail.app/Info.plist)" = "15.0"
+
+      - name: 上传 IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-ipa
+          path: ios/build/*-unsigned.ipa
+          if-no-files-found: error
+
+  android:
+    name: 打包 Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 校验并整理 APK
+        run: |
+          APK=$(ls android/GayMail-*.apk | head -n1)
+          unzip -l "$APK" | grep -q "AndroidManifest.xml"
+          unzip -l "$APK" | grep -q "classes.dex"
+          mkdir -p dist
+          cp "$APK" dist/
+          sha256sum dist/*.apk | tee dist/SHA256SUMS-apk.txt
+          ls -lh dist/
+
+      - name: 上传 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: dist/*
+          if-no-files-found: error
+
+  release:
+    name: 创建 GitHub Release
+    needs: [ios, android]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 下载构建产物
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: 汇总发布文件
+        run: |
+          mkdir -p dist
+          find artifacts -type f -name "*.ipa" -exec cp {} dist/ \;
+          find artifacts -type f -name "*.apk" -exec cp {} dist/ \;
+          cd dist && sha256sum * > SHA256SUMS.txt || true
+          ls -lh dist/
+
+      - name: 生成发布说明
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          cat > RELEASE_NOTES.md <<EOF
+          ## GayMail Mobile Client ${VERSION}
+
+          ### 下载
+          | 平台 | 文件 | 说明 |
+          | --- | --- | --- |
+          | iOS | \`GayMail-${VERSION}-unsigned.ipa\` | 未签名，需自行签名后安装 |
+          | Android | \`GayMail-1.0.0.apk\` | 原始 Android 客户端安装包 |
+
+          ### iOS 安装说明
+          本 IPA 为 **未签名** 产物，无法直接安装。请使用以下任一方式重签名后安装：
+          - AltStore / SideLoadly 等自签工具
+          - TrollStore（支持的系统版本）
+          - 使用自己的开发者证书执行 \`codesign\` 后通过 Xcode / Apple Configurator 安装
+
+          - 最低系统版本：iOS 15.0
+          - 校验文件：\`SHA256SUMS.txt\`
+          EOF
+          cat RELEASE_NOTES.md
+
+      - name: 创建 Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.event.inputs.version }}
+          PRERELEASE: ${{ github.event.inputs.prerelease }}
+        run: |
+          FLAGS=""
+          if [ "$PRERELEASE" = "true" ]; then FLAGS="--prerelease"; fi
+          gh release create "v${VERSION}" \
+            --title "GayMail Mobile Client ${VERSION}" \
+            --notes-file RELEASE_NOTES.md \
+            --target "${{ github.sha }}" \
+            $FLAGS \
+            dist/*

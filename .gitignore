@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Xcode / 构建产物
+build/
+DerivedData/
+*.xcarchive
+*.ipa
+*.xcresult
+
+# XcodeGen 生成的工程文件（由 project.yml 生成）
+ios/GayMail.xcodeproj/
+
+# Xcode 用户数据
+xcuserdata/
+*.xcuserstate
