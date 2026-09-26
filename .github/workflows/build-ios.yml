@@ -14,7 +14,7 @@ concurrency:
 jobs:
   ios:
     name: iOS 构建与单元测试
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 40
 
     steps:
