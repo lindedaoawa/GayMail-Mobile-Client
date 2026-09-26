@@ -52,7 +52,37 @@ final class HTMLViewTests: XCTestCase {
             html: "<p>rich</p>",
             attachments: []
         )
-        XCTAssertEqual(HTMLView.document(for: detail), "<p>rich</p>")
+        let document = HTMLView.document(for: detail)
+        // 正文保留服务端 HTML，同时注入 viewport 与移动端适配样式
+        XCTAssertTrue(document.contains("<p>rich</p>"))
+        XCTAssertTrue(document.contains("name=\"viewport\""))
+        XCTAssertTrue(document.contains("-webkit-text-size-adjust"))
+    }
+
+    func testDocumentKeepsExistingViewport() {
+        let detail = MailDetail(
+            item: makeItem(),
+            body: "",
+            html: "<html><head><meta name=\"viewport\" content=\"width=640\"></head><body>x</body></html>",
+            attachments: []
+        )
+        let document = HTMLView.document(for: detail)
+        // 已有 viewport 时不重复注入
+        XCTAssertEqual(document.components(separatedBy: "name=\"viewport\"").count - 1, 1)
+        XCTAssertTrue(document.contains("content=\"width=640\""))
+    }
+
+    func testDocumentWrapsFragmentWithoutHTMLTag() {
+        let detail = MailDetail(
+            item: makeItem(),
+            body: "",
+            html: "<p>fragment</p>",
+            attachments: []
+        )
+        let document = HTMLView.document(for: detail)
+        XCTAssertTrue(document.hasPrefix("<!DOCTYPE html>"))
+        XCTAssertTrue(document.contains("<p>fragment</p>"))
+        XCTAssertTrue(document.contains("name=\"viewport\""))
     }
 
     func testDocumentWrapsPlainTextInEscapedPre() {

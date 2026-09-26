@@ -14,6 +14,8 @@ struct MailDetailView: View {
     @State private var showDeleteConfirm = false
     @State private var shareItem: ShareItem?
     @State private var compose: ComposeSeed?
+    /// 正文 HTML 的自适应高度
+    @State private var bodyHeight: CGFloat = 240
 
     private struct ShareItem: Identifiable {
         let id = UUID()
@@ -97,9 +99,10 @@ struct MailDetailView: View {
     private func bodyView(_ detail: MailDetail) -> some View {
         HTMLView(
             html: HTMLView.document(for: detail),
-            baseURLString: session.server
+            baseURLString: session.server,
+            contentHeight: $bodyHeight
         )
-        .frame(minHeight: 240)
+        .frame(height: bodyHeight)
     }
 
     private func attachments(_ detail: MailDetail) -> some View {
